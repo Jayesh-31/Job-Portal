@@ -1,0 +1,55 @@
+<div class="container border rounded-2 p-3">
+    <h1 class="my-3">Add New Job</h1>
+    <div id="errorContainer" class="alert alert-danger hide" role="alert"></div>
+    <form id="addJobForm" action="/job" method="post">
+        <div class="input-group mb-3">
+            <span class="input-group-text">Company Name</span>
+            <input required="" name="companyName" type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+        </div>
+
+        <div class="input-group mb-3">
+          <span class="input-group-text">Select Job Designation</span>
+          <select required="" name="role" class="form-select select2-container" aria-label="Default select example">
+            <% if(jobDesignationList.length > 0) { %>
+                <% jobDesignationList.forEach(job => { %>
+                    <option value="<%= job %>"><%= job %></option>
+                <% }) %>
+            <% } %>            
+          </select>
+        </div>
+    
+        <div class="mb-3">
+          <div class="input-group">
+            <span class="input-group-text">Enter job location</span>
+            <input required="" name="location" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
+          </div>
+        </div>
+    
+        <div class="input-group mb-3">
+          <span class="input-group-text">Enter Salary</span>
+          <input required="" name="salary" type="text" class="form-control"  aria-label="Username">
+          <span class="input-group-text">Total Positions</span>
+          <input required="" name="openings" type="number" class="form-control" placeholder="total no of openings" aria-label="Server">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">Select Skill Set</span>
+          <select required="" name="skills" class="form-select select2-container" aria-label="Default select example" multiple="multiple">
+            <% if(skillSetList.length > 0) { %>
+                <% skillSetList.forEach(skillSet => { %>
+                    <option value="<%= skillSet %>"><%= skillSet %></option>
+                <% }) %>
+            <% } %>          
+          </select>
+        </div>
+        
+        <div class="mb-3">
+            <div class="input-group">
+              <span class="input-group-text">Apply By</span>
+              <input name="applyByDate" type="date" class="form-control" placeholder="total no of openings" aria-label="Server" required="">
+            </div>
+          </div>
+        <button class="mb-3 mt-2 btn btn-success" type="submit">
+          Submit
+        </button>
+      </form>
+</div>

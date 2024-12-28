@@ -15,6 +15,17 @@ main{
 }
 /* material-symbols ends*/
 
+/* Select2 CSS Starts*/
+.select2-container{
+    background-color: #e6e6e6; /* Bootstrap primary color */
+    border: 1px solid #ffffffb7; /* Darker primary color */
+    border-radius: 0.25rem; /* Small rounded corners */
+    padding: 0.25rem 0.5rem;
+    margin-right: 0.25rem;
+}
+/* Select2 CSS Ends*/
+
+
 /*job list page starts*/
 .job-card-container{
     gap: 2.5rem 

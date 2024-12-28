@@ -4,18 +4,37 @@ import JobModel from "../model/job.model.js";
 export default class JobController{
 
     getHomePage(req, res){
-        res.render('pages/homePage',{loginStatus: req.loginStatus});
+        res.render('pages/homePage',{loginStatus: req.session.userEmail});
     }
     getJobList(req, res){
         const jobData = JobModel.fetchJobs();
-        res.render('pages/jobList', {title: 'jobs', jobs: jobData, loginStatus: req.loginStatus});
+        res.render('pages/jobList', {title: 'jobs', jobs: jobData, loginStatus: req.session.userEmail});
     }
     getJobLanding(req, res){
         let jobId = req.params.id;
         jobId--;
         const jobData = JobModel.fetchJobs();
         const job = jobData[jobId];
-        res.render('pages/jobLanding',{job: job, loginStatus: req.loginStatus});
+        res.render('pages/jobLanding',{job: job, loginStatus: req.session.userEmail});
+    }
+
+    getJobAddPage(req, res){
+        const skillSetList = JobModel.getSkillSetList();
+        const jobDesignationList = JobModel.getJobDesignationList();
+
+        res.render('pages/jobAddPage',{skillSetList: skillSetList, jobDesignationList: jobDesignationList, loginStatus: req.session.userEmail});
+    }
+
+    postNewJob(req, res){
+        const jobData = req.body;
+        const result = JobModel.addNewJob(jobData);
+        if(result){
+            return res.send({success: true});
+        }
+    }
+
+    getJobEditPage(req, res){
+
     }
 
     handleApply(req, res){
@@ -40,6 +59,7 @@ export default class JobController{
         const result = JobModel.validateLogin(data);
         if(result){
             req.session.userEmail = data.email;
+            req.session.userName = data.name;
             return res.status(200).send({success: true});
         } else {
             const errorObj = {

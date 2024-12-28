@@ -1,16 +1,19 @@
-const date = new Date('2024-12-26');
-const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-const formattedDate = date.toLocaleDateString('en-GB', options);
+const moment = require('moment');
 
-console.log(formattedDate); // Output: 26/12/2024
+// Fetch current date
+const currentDate = moment();
 
+// Format current date
+const formattedDate1 = currentDate.format('DD MMM YYYY'); // e.g., 20 Dec 2024
+const formattedDate2 = currentDate.format('DD/MM/YYYY'); // e.g., 20/12/2024
+const formattedDate3 = currentDate.format('DD-MM-YYYY'); // e.g., 20-12-2024
 
+console.log(formattedDate1, formattedDate2, formattedDate3);
 
+// Format custom date
+const customDate = moment('2024-12-20');
+const customFormattedDate1 = customDate.format('DD MMM YYYY');
+const customFormattedDate2 = customDate.format('DD/MM/YYYY');
+const customFormattedDate3 = customDate.format('DD-MM-YYYY');
 
-
-
-const date = new Date("2022-08-30");
-const options = { day: '2-digit', month: 'short', year: 'numeric' };
-const formattedDate = date.toLocaleDateString('en-GB', options);
-
-console.log(formattedDate); // Output: 30 Aug 2022
+console.log(customFormattedDate1, customFormattedDate2, customFormattedDate3);

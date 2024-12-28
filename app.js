@@ -12,6 +12,7 @@ const port = 3001;
 const jobController = new JobController();
 // Serve static files from the "public" directory
 app.use(express.static(path.resolve('public')));
+app.use(express.json());
 app.use(express.urlencoded({"extended": true}));
 app.use(expressEjsLayouts);
 app.set('view engine', 'ejs');
@@ -28,7 +29,6 @@ app.use(
     })
 );
 
-app.use(auth);
 
 app.get('/', (req, res) => {
     res.redirect('/home');
@@ -38,7 +38,13 @@ app.get('/home', jobController.getHomePage);
 
 app.get('/jobs', jobController.getJobList);
 
+app.get('/job/add', auth, jobController.getJobAddPage);
+
+app.post('/job', auth, uploadFile.none(), validationRequest, jobController.postNewJob)
+
 app.get('/jobs/:id', jobController.getJobLanding);
+
+app.get('/job/1/edit', auth, jobController.getJobEditPage);
 
 app.post('/apply/:id', uploadFile.single('resumeFile'), validationRequest, jobController.handleApply);
 

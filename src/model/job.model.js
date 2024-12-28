@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export default class JobModel{
     static fetchJobs(){
         return jobs;
@@ -25,6 +27,24 @@ export default class JobModel{
         } else {
             return true;
         }
+    }
+
+    static addNewJob(data){
+        const customDate = moment(data.applyByDate);
+        data.applyByDate = customDate.format('DD MMM YYYY');
+        const currentDate = moment();
+        data.postedOnDate = currentDate.format('DD/MM/YYYY');
+        data.id = jobIdGen++;
+        jobs.push(data);
+        return true;
+    }
+
+    static getJobDesignationList(){
+        return jobDesignationList;
+    }
+
+    static getSkillSetList(){
+        return skillSetList;
     }
 }
 
@@ -115,3 +135,7 @@ const jobs = [
     },
 ]
 let jobIdGen = 7;
+
+const jobDesignationList = ['HR', 'SDE', 'DevOps', 'MERN Developer', 'MEAN Developer', 'JAVA Developer', 'React Developer', 'Angular Developer', 'FullStack Developer', 'FrontEnd Developer', 'BackEnd Developer'];
+
+const skillSetList = ['React', 'NodeJS', 'Angular', 'MongoDB', 'SQL', 'Express', 'JAVA', 'SpringBoot', 'C++', 'DSA'];

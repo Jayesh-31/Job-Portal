@@ -1,10 +1,9 @@
 function auth(req, res, next){
     if(req.session.userEmail){
-        req.loginStatus = true;
+        next();
     } else {
-        req.loginStatus = false;
+        return res.redirect('/login');
     }
-    next();
 }
 
 export default auth;
