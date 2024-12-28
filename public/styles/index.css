@@ -1,0 +1,45 @@
+main{
+    margin-top: 8rem;
+}
+
+/*utilites starts*/
+.hide{
+    display:none;
+}
+/*utilites ends*/
+
+
+/* material-symbols starts*/
+.material-symbols-outlined{
+    font-size: 1rem;
+}
+/* material-symbols ends*/
+
+/*job list page starts*/
+.job-card-container{
+    gap: 2.5rem 
+}
+.job-card{
+    transform: scale(1);
+    transition: transform 300ms ease-in-out;
+}
+.job-card:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+/*job list page ends*/
+
+
+
+/*job landing page starts*/
+.job-action-icon{
+    margin-right: 0.8rem;
+    transform: translateY(0px);
+    font-size: 1.5rem;
+    transition: transform 100ms ease-in-out;
+}
+.job-action-icon:hover{
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+/*job landing page ends*/

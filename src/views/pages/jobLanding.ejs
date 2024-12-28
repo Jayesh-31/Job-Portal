@@ -1,0 +1,108 @@
+<div class="container border rounded-2 shadow-lg my-4 p-4">
+  <div class="job-header d-flex justify-content-center my-4">
+    <h1 class="border-bottom border-5">
+      <%=job.role%> oppurtunity in <%=job.location%> at <%=job.companyName%>
+    </h1>
+    <br />
+  </div>
+
+  <div class="job-body">
+    <div>
+      <h4>
+        <%=job.companyName%>
+        <%if(loginStatus){%>
+            <div class="d-inline mx-4">
+                <span title="Edit" class="material-symbols-outlined text-info-emphasis job-action-icon">
+                  edit_square
+                </span>
+                <span title="Delete" class="material-symbols-outlined text-danger job-action-icon">
+                  delete
+                </span>
+            </div>
+        <%}%>
+      </h4>
+      <p>Tech <%=job.role%></p>
+    </div>
+    <div>
+      <p>
+        <span class="material-symbols-outlined"> location_on </span>
+        <%=job.location%> <br />
+        <span class="material-symbols-outlined"> currency_rupee </span>
+        <%=job.salary%> <br />
+        <span class="material-symbols-outlined"> hourglass_empty </span> Apply
+        By <%=job.applyByDate%> <br />
+        <span class="material-symbols-outlined"> signal_cellular_alt </span>
+        Number of Openings <%=job.openings%> <br />
+        <span class="material-symbols-outlined"> group </span> Applicants
+        <%=job.applicants%>
+      </p>
+    </div>
+    <div>
+      <!-- Use flex-wrap and gap for spacing -->
+      <% job.skills.forEach(skill => { %>
+      <button class="btn btn-danger btn-sm" style="flex-shrink: 0">
+        <%= skill %>
+      </button>
+      <!-- Prevent button shrinkage -->
+      <% }) %>
+    </div>
+    <div class="mt-4">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Apply
+        </button>
+    </div>
+    <div class="mt-4">
+        <span class="bg-success text-white p-2 rounded-2">Posted On <%=job.postedOnDate%></span>
+    </div>
+  </div>
+
+  <div class="modal-container">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Easily</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="modalErrorContainer" class="alert alert-danger hide" role="alert">
+                    <!-- A simple danger alert—check it out! -->
+                </div>
+                <form id="job-apply" action="/apply/<%=job.id%>" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="jobId" value="<%=job.id%>">
+                    <div class="mb-3">
+                      <div class="input-group">
+                        <span class="input-group-text">Name</span>
+                        <input name="name" type="text" aria-label="First name" class="form-control" placeholder="Enter your name">
+                      </div>
+                    </div>
+        
+                    <div class="mb-3">
+                      <div class="input-group">
+                        <span class="input-group-text">Email</span>
+                        <input name="email" type="email" aria-label="email" class="form-control" placeholder="Enter your email">
+                      </div>
+                    </div>
+        
+                    <div class="mb-3">
+                      <div class="input-group">
+                        <span class="input-group-text">Contact</span>
+                        <input name="contact" type="tel" aria-label="First name" class="form-control" placeholder="Enter your number">
+                      </div>
+                    </div>
+        
+                    <div class="input-group mb-3">
+                      <label class="input-group-text" for="inputGroupFile01">Resume</label>
+                      <input name="resumeFile" type="file" class="form-control" id="inputGroupFile01" required="">
+                    </div>
+        
+                    <button class="mb-3 mt-2 btn btn-md btn-success" type="submit">
+                      Submit
+                    </button>
+                  </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

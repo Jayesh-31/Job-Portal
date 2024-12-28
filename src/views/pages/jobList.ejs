@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="d-flex flex-wrap job-card-container">
+    <% jobs.forEach(job => { %>
+    <div
+      class="card shadow rounded-3 bg-body-tertiary p-2 job-card"
+      style="width: 18rem; margin-bottom: 20px"
+    >
+      <div class="card-body">
+        <div class="card-title">
+          <h3><%= job.companyName %></h3>
+          <p><%= job.role %></p>
+        </div>
+        <div class="card-text">
+          <p class="align-items-baseline">
+            <span class="material-symbols-outlined"> location_on </span
+            ><span><%= job.location %></span>
+          </p>
+          <p>
+            <span class="material-symbols-outlined"> currency_rupee </span
+            ><span><%= job.salary %></span>
+          </p>
+          <div class="d-flex flex-wrap gap-1">
+            <!-- Use flex-wrap and gap for spacing -->
+            <% job.skills.forEach(skill => { %>
+            <button class="btn btn-danger btn-sm" style="flex-shrink: 0">
+              <%= skill %>
+            </button>
+            <!-- Prevent button shrinkage -->
+            <% }) %>
+          </div>
+          <div class="mt-4">
+            <a href="jobs/<%= job.id %>" class="btn btn-primary w-100">Apply</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="container col-6 border rounded-2 shadow-sm p-3">
+  <h1 class="m-3">Login</h1>
+  <div id="loginErrorContainer" class="alert alert-danger hide" role="alert"></div>
+  <form id="loginForm" action="/login" method="post" class="p-2">
+    <div class="mb-3">
+      <div class="input-group">
+        <span class="input-group-text">Email</span>
+        <input
+          required=""
+          name="email"
+          type="email"
+          aria-label="email"
+          class="form-control"
+          placeholder="Enter your email"
+        />
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="input-group">
+        <span class="input-group-text">Password</span>
+        <input
+          required=""
+          name="password"
+          type="password"
+          aria-label="password"
+          class="form-control"
+          placeholder="Enter your password"
+        />
+      </div>
+    </div>
+    <button type="submit" class="btn bg-success text-white">Login</button>
+  </form>
+</div>

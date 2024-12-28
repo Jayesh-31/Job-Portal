@@ -1,0 +1,117 @@
+<div class="container d-flex justify-content-center my-4">
+  <div class="col-6 py-5">
+    <h1>A comprehensive platform for reliable</h1>
+    <h2>job opportunities and internships</h2>
+    <p>Get Discovered. Get Hired.</p>
+    <div>
+      <a
+        href="/jobs"
+        class="btn btn-primary login-btn"
+        data-user-type="job-seeker"
+        >I'm a Job Seeker</a
+      >
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop"
+        data-user-type="recruiter"
+      >
+        I'm a Recruiter
+      </button>
+    </div>
+  </div>
+  <div class="col-6">
+    <img src="/Media/homepage.png" class="img-fluid" alt="Homepage Image" />
+  </div>
+  <div
+    class="modal fade"
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Easily</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div
+            id="registerErrorContainer"
+            class="alert alert-danger hide"
+            role="alert"
+          ></div>
+          <form id="registerForm" action="/register" method="post" class="p-2">
+            <div class="mb-3">
+              <div class="input-group">
+                <span class="input-group-text">Name</span>
+                <input
+                  required=""
+                  name="name"
+                  type="text"
+                  aria-label="name"
+                  class="form-control"
+                  placeholder="enter your name"
+                />
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <div class="input-group">
+                <span class="input-group-text">Email</span>
+                <input
+                  required=""
+                  name="email"
+                  type="email"
+                  aria-label="email"
+                  class="form-control"
+                  placeholder="enter your email"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="input-group">
+                <span class="input-group-text">Password</span>
+                <input
+                  required=""
+                  name="password"
+                  type="password"
+                  aria-label="password"
+                  class="form-control"
+                  placeholder="enter your password"
+                />
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn btn-primary mt-2">
+              Register
+            </button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <div
+            class="left d-flex flex-row align-items-centre justify-content-centre"
+          >
+            <!-- Button trigger login modal -->
+            <span>Already registered?</span>
+            <a
+              href="/login"
+              class="btn btn-sm px-3 btn-success mx-2"
+            >
+              login
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
